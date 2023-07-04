@@ -1,0 +1,25 @@
+/* selector, selector :- It is used to select two or more elements, classes or ids to have the same css code */
+h1,
+h2 {
+	color: blueviolet;
+}
+
+/* selector > selector :- In this first selector is the parent and second is the direct child and we have applied css code to direct child here. */
+div > p {
+	color: firebrick;
+}
+
+/* selector selector :- It is same as above one but in this first selector is the ancestor and second is its decendent and css code is applied to the decendent. */
+.box li {
+	color: blue;
+}
+
+/* selectorselector :- here the first selector is always html tag and second third and all other are classes or ids. */
+li.done {
+	color: green;
+}
+
+/* selector selectorselector :- combining different selectors */
+ul p.done {
+	font-size: 0.5rem;
+}
