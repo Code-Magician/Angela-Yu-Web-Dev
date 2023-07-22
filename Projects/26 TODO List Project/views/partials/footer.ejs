@@ -1,0 +1,27 @@
+<footer>
+    <div class="footer-container">
+        <hr />
+        <p>@copyright to singh priyansh 2023</p>
+    </div>
+
+</footer>
+
+<script>
+    console.log("Working in footer.ejs");
+    var checkBoxes = document.querySelectorAll(".check");
+    console.log(checkBoxes);
+    checkBoxes.forEach(checkBox => {
+
+        checkBox.addEventListener('change', function () {
+            var value = checkBox.classList[1];
+            var text = document.querySelector("#text" + value);
+            console.log(text);
+            if (this.checked) text.classList.add("strike");
+            else text.classList.remove("strike");
+        });
+
+    });
+</script>
+</body>
+
+</html>
