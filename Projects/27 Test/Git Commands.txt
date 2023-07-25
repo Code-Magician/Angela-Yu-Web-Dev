@@ -1,0 +1,3 @@
+git diff <file name>  :-  to check the differnce between the current content of the file and the content on the previos commit.
+git checkout <file name>  :-  this makes the file to revert back to the last commit. File mein vo content aa jaaega jo last commit mein tha.
+git rm --cached -r <file name>  :-  to remove the file from the staged area.
