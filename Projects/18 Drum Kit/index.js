@@ -47,8 +47,8 @@ for (var i = 0; i < buttons.length; i++) {
 	});
 }
 
-document.addEventListener("keydown", function (event) {
-	var key = event.key;
-	playSound(key);
-	buttonAnimation(key);
-});
+// document.addEventListener("keydown", function (event) {
+// 	var key = event.key;
+// 	playSound(key);
+// 	buttonAnimation(key);
+// });

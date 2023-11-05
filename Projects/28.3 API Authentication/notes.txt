@@ -1,0 +1,6 @@
+There are 4 types of Authentications. Security Increase from TOP--BOTTOM.
+
+1. No Authentication :- In this the API provider adds Rate limit. which limits the number of request we can make to the API server per minute.
+2. Basic Authentication :- In this we provide Username and password which are encoded by Base64 encoding and the final result of encoded username and password is provided to the API provider using the Authentication Header with the encoded value of username:password.
+3. API Key Authorisation :- In this no Authentication is required any user can generate an api key and then they can use the API key to request to API without logging in or Authentication. This is used to track how much API request are being done by each API key.
+4. Token Based Authentication :- In this user first do the Basic Authentication and register themselves on the API using Username and password. then using those credentials user generates the Authentication token which can be used anytime to access the API without doing Authentication again and again.
