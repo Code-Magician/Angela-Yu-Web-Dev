@@ -1,0 +1,189 @@
+*{
+    margin:0;
+    font-family: 'Kanit', sans-serif;
+    font-family: 'Playpen Sans', cursive;
+}
+
+
+body::before {
+    content: "";
+    background: url("/29\ Bhagavad\ Gita\ Site/public/images/BG.jpg") no-repeat center center/cover; 
+    opacity: 0.5;
+    position: fixed;
+    top: 0; right: 0; bottom: 0; left: 0;
+    z-index: -1;
+    filter:blur(5px);
+  }
+
+body{
+    /* display:flex;
+    justify-content:center;
+    align-items:center; */
+    background: linear-gradient(rgb(255, 255, 255), #000000);
+}
+
+
+hr{
+    width:90%;
+    
+    height:1px;
+    background-color:black;
+    border:0;
+}
+
+.container{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    gap:50px;
+
+    width:100%;
+}
+
+.container > h1 {
+    font-size:125px;
+    font-weight:900;
+
+    color:#f2be2e;
+    text-shadow: -5px 5px 5px rgb(0 0 0 / 50%);
+}
+
+.header{
+    display: flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    gap: 50px;
+
+    height:65vh;
+    width: 90%;
+
+    background-image: linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25)), url("/29\ Bhagavad\ Gita\ Site/public/images/headerIMG.jpg");
+    background-position-x: center;
+    background-size:cover;
+
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.5);
+
+    border-radius:20px;
+}
+
+
+.header > h1 {
+    color:aliceblue;
+
+    text-align: center;
+
+    font-size:70px;
+    font-weight: bolder;
+
+    line-height:110%;
+
+    text-shadow: 0 3px 10px rgb(0 0 0 / 0.5);
+}
+
+.header span{
+    color:#FEDF89;
+}
+
+.header > button {
+    width : 150px;
+    height: 50px;
+
+    font-size:medium;
+    font-weight:lighter;
+
+    border-radius:5px;
+    border:0;
+
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.5);
+
+    padding:0;
+}
+
+.header > button:hover{
+    cursor:pointer;
+}
+
+.chapters {
+    display: flex;
+    justify-content:center;
+    align-items:flex-start;
+    flex-direction:column;
+    gap: 50px;
+
+    width: 75%;
+}
+
+.chapters > h2 {
+    font-size:70px;
+    font-weight:bolder;
+}
+
+.chaptersGrid{
+    display:grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(9, 1fr);
+    gap:20px;
+
+    width:100%;
+}
+
+.chaptersDescription {
+    display:flex;
+    justify-content:center;
+    align-items:flex-start;
+    flex-direction:column;
+    
+    padding:25px;
+
+    background-color:whitesmoke;
+
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.5);
+
+    border: 2px solid rgba(255, 156, 17, 0.0);
+    border-radius:10px;
+
+    font-size:125%;
+}
+
+.chaptersDescription:hover{
+    cursor:pointer;
+
+    background-color:rgba(255, 224, 137, 0.5);
+
+    border: 2px solid rgb(246, 192, 44);
+}
+
+.chaptersDescription > h4 {
+    margin-bottom:5px;
+}
+
+.chaptersDescription > p {
+    margin-top:10px;
+    margin-bottom:10px;
+}
+
+.footer{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    width:100%;
+    height:10vh;
+
+    color:white;
+}
+
+.footer a:link{
+    text-decoration:none;
+    color:aqua;
+}
+
+.footer a:visited{
+    color:aqua;
+}
+
+.footer a:active{
+    color:red;
+}
