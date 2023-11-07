@@ -5,30 +5,40 @@
 }
 
 
-body::before {
-    content: "";
-    background: url("/29\ Bhagavad\ Gita\ Site/public/images/BG.jpg") no-repeat center center/cover; 
-    opacity: 0.5;
-    position: fixed;
-    top: 0; right: 0; bottom: 0; left: 0;
-    z-index: -1;
-    filter:blur(5px);
-  }
-
-body{
-    /* display:flex;
-    justify-content:center;
-    align-items:center; */
-    background: linear-gradient(rgb(255, 255, 255), #000000);
-}
-
-
 hr{
-    width:90%;
+    width:75%;
     
     height:1px;
     background-color:black;
     border:0;
+}
+
+
+/* Home Page */
+
+.nav{
+    z-index:10;
+
+    position:fixed;
+    top:0;
+    left:0;
+
+    display:flex;
+    justify-content:flex-start;
+    align-items:center;
+
+    width:100%;
+    height:10vh;
+
+    background-color: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+}
+
+.nav > h1 {
+    margin-left:7vw;
+
+    color:white;
 }
 
 .container{
@@ -45,8 +55,7 @@ hr{
     font-size:125px;
     font-weight:900;
 
-    color:#f2be2e;
-    text-shadow: -5px 5px 5px rgb(0 0 0 / 50%);
+    color:#000000;
 }
 
 .header{
@@ -63,7 +72,7 @@ hr{
     background-position-x: center;
     background-size:cover;
 
-    box-shadow: 0 3px 10px rgb(0 0 0 / 0.5);
+    margin-top:20vh;
 
     border-radius:20px;
 }
@@ -110,9 +119,11 @@ hr{
     justify-content:center;
     align-items:flex-start;
     flex-direction:column;
-    gap: 50px;
+    gap: 25px;
 
     width: 75%;
+
+    margin-top:20px;
 }
 
 .chapters > h2 {
@@ -137,31 +148,37 @@ hr{
     
     padding:25px;
 
-    background-color:whitesmoke;
+    background-color:rgb(255, 255, 255);
 
-    box-shadow: 0 3px 10px rgb(0 0 0 / 0.5);
+    box-shadow: 0px 8px 16px rgba(22,34,51,.08);
 
     border: 2px solid rgba(255, 156, 17, 0.0);
     border-radius:10px;
 
-    font-size:125%;
+    font-size:100%;
 }
 
 .chaptersDescription:hover{
     cursor:pointer;
 
-    background-color:rgba(255, 224, 137, 0.5);
+    background-color:rgba(255, 224, 137, 0.2);
 
-    border: 2px solid rgb(246, 192, 44);
+    border: 2px solid rgba(246, 192, 44, 0.5);
 }
 
 .chaptersDescription > h4 {
     margin-bottom:5px;
+
+    color:#F57903;
 }
 
 .chaptersDescription > p {
     margin-top:10px;
     margin-bottom:10px;
+
+    color:#6B7280;
+
+    font-size:13px;
 }
 
 .footer{
@@ -172,18 +189,168 @@ hr{
     width:100%;
     height:10vh;
 
-    color:white;
+    color:rgb(0, 0, 0);
 }
 
 .footer a:link{
     text-decoration:none;
-    color:aqua;
+    color:rgb(70, 65, 235);
 }
 
 .footer a:visited{
-    color:aqua;
+    color:rgb(70, 65, 235);;
 }
 
 .footer a:active{
     color:red;
+}
+
+
+/* Chapter Page */
+
+.chapter_details{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    gap:30px;
+
+    width:60%;
+
+    margin-top:20vh;
+}
+
+.chapter_details > h4{
+    font-size:20px;
+    font-weight:lighter;
+
+    color:#F57903;
+}
+
+.chapter_details > h1{
+    font-size:35px;
+    font-weight:bolder;
+}
+
+.chapter_details > p{
+    font-size:19px;
+}
+
+.verses{
+    display:flex;
+    justify-content:center;
+    align-items:flex-start;
+    flex-direction:column;
+    gap:30px;
+
+    width:60%;
+}
+
+
+.versesList{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    gap:20px;
+
+    width:100%;
+}
+
+.verse{
+    display:flex;
+    justify-content:space-around;
+    align-items:flex-start;
+    gap:50px;
+    
+    width:100%;
+
+    padding:30px;
+
+    border-radius: 10px;;
+}
+
+.verse:hover{
+    background-color:rgba(255, 224, 137, 0.2);
+}
+
+.verse > h4{
+    font-weight:lighter;
+
+    width:20%;
+
+    color:#F57903;
+}
+
+.verse_details{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    gap:30px;
+
+    width:60%;
+
+    margin-top:20vh;
+
+    text-align:center;
+}
+
+.verse_details > h1:nth-child(1){
+    font-weight: 900;
+}
+
+.verse_details > h1:nth-child(2){
+    color:#F57903;
+    
+    font-weight:lighter;
+
+    width:52%;
+}
+
+.verse_details > p:nth-child(3){
+    font-size:large;
+    font-weight:100;
+
+    width:52%;
+}
+
+.verse_details > p:nth-child(4){
+    font-size:medium;
+
+    width:100%;
+}
+
+.verse_translation{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    gap:30px;
+
+    width:75%;
+
+    font-weight:900;
+}
+
+.verse_translation > p{
+    font-weight:100;
+    font-size:19px;
+}
+
+.verse_commentry{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    gap:30px;
+
+    width:75%;
+
+    font-weight:900;
+}
+
+.verse_commentry > p{
+    font-weight:100;
+    font-size:19px;
 }
