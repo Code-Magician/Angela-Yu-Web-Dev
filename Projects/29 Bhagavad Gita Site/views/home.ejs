@@ -1,0 +1,67 @@
+<!-- Header -->
+<%- include('partials/header.ejs') %>
+
+            <!-- Header -->
+            <div class="header">
+                <h1>
+                    Experience the Gita
+                    <br>
+                    <span>Anywhere, Anytime</span>
+                </h1>
+                <button>Read Now</button>
+            </div>
+
+            <br>
+            <hr id="chapters" />
+
+
+            <!-- Chapters -->
+            <div class="chapters">
+                <h2>Chapters</h2>
+
+                <div class="chaptersGrid">
+
+                    <% chapters.forEach(chapter=> { %>
+                        <div class="chaptersDescription" id="<%= chapter.chapterNumber %>">
+                            <h4>Chapter <%= chapter.chapterNumber %>
+                            </h4>
+                            <h3>
+                                <%= chapter.englishName %>
+                            </h3>
+                            <p>
+                                <%= chapter.chapterSummeryEnglish.substring(0, Math.min(chapter.chapterSummeryEnglish.length, 277)) %>..
+                            </p>
+                            <h5>
+                                <%= chapter.verseCount %> verses
+                            </h5>
+                        </div>
+                    <% }); %>
+
+                </div>
+            </div>
+
+            <hr />
+
+            <!-- Footer -->
+            <%- include('partials/footer.ejs') %>
+        </div>
+
+
+        <!-- Script -->
+        <script>
+            $(".header button").click(() => {
+                window.location.href = "#chapters";
+            })
+
+            $(".chaptersDescription").each((index, element) => {
+                let id = $(element).attr("id");
+
+                $(element).on("click", () => {
+                    window.location.href = `/chapter/${id}`;
+                });
+            });
+        </script>
+
+    </body>
+
+    </html>

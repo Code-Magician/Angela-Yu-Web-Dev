@@ -1,0 +1,56 @@
+<!-- Header -->
+<%- include('partials/header.ejs') %>
+
+
+            <!-- Chapter Details -->
+            <div class="chapter_details">
+                <h4>Chapter <%= chapter.chapterNumber %>
+                </h4>
+                <h1>
+                    <%= chapter.englishName %>
+                </h1>
+                <br>
+                <p>
+                    <%= chapter.chapterSummeryEnglish %>
+                </p>
+            </div>
+
+            <br>
+            <hr>
+
+            <!-- Chapter's Verse List -->
+            <div class="verses">
+                <h2><%= chapter.verseCount %> Verses</h2>
+                <div class="versesList">
+                    
+                    <% verses.forEach(verse => { %>
+                        <div class="verse" id="<%= verse.verseNumber %>">
+                            <h4>Verse <%= verse.verseNumber %></h4>
+                            <p><%= verse.englishTranslation.substring(0, Math.min(verse.englishTranslation.length, 150))%>..</p>
+                        </div>
+                    <% }); %>
+                    
+                </div>
+            </div>
+
+            <hr>
+
+            <!-- Footer -->
+            <%- include('partials/footer.ejs') %>
+
+        </div>
+
+
+        <!-- Script -->
+        <script>
+            $(".verse").each((index, element) => {
+                let id = $(element).attr("id");
+
+                $(element).on("click", () => {
+                    window.location.href = `/chapter/<%=chapter.chapterNumber%>/verse/${id}`;
+                });
+            });
+        </script>
+    </body>
+
+    </html>
