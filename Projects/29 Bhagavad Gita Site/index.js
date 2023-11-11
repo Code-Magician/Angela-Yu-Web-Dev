@@ -1,13 +1,31 @@
 import express from "express";
 import bodyParser from "body-parser";
 import axios from "axios";
+import {dirname} from 'path';
+import { fileURLToPath } from "url";
+import dotenv from "dotenv";
 import { Chapter } from "./schemas/chapterDetails.js";
 import { Verse } from "./schemas/verseDetails.js";
 
-const API_KEY = "9a8cb40716msh060641adc01ab4ep1a6b97jsn2ff592949651";
+dotenv.config();
+const API_KEY = process.env.API_KEY;
+
+// API URL
+const API_URL = "https://bhagavad-gita3.p.rapidapi.com/v2/chapters/";
+
+// Request object
+const request = {
+    method: "GET",
+    url: API_URL,
+    headers: {
+        "X-RapidAPI-Key": API_KEY,
+        "X-RapidAPI-Host": "bhagavad-gita3.p.rapidapi.com",
+    },
+};
 
 const PORT = 3000;
 const app = express();
+const __dirname = dirname(fileURLToPath(import.meta.url));
 
 // Middleware
 app.use(bodyParser.json());
@@ -16,81 +34,38 @@ app.use(express.static("public"));
 
 // GET request for fetching all the chapters details.
 app.get("/", async (req, res) => {
-    // Request Details
-    const options = {
-        method: "GET",
-        url: "https://bhagavad-gita3.p.rapidapi.com/v2/chapters/",
-        params: { limit: "18" },
-        headers: {
-            "X-RapidAPI-Key": API_KEY,
-            "X-RapidAPI-Host": "bhagavad-gita3.p.rapidapi.com",
-        },
-    };
-
     var chapters = [];
+
     try {
-        const response = await axios.request(options);
+        request.url = API_URL;
+        const response = await axios.request(request);
 
         response.data.forEach((chapter) => {
-            var temp = new Chapter({
-                id: chapter.id,
-                hindiName: chapter.name,
-                englishName: chapter.name_translated,
-                verseCount: chapter.verses_count,
-                chapterNumber: chapter.chapter_number,
-                chapterNameMeaning: chapter.name_meaning,
-                chapterSummeryHindi: chapter.chapter_summary_hindi,
-                chapterSummeryEnglish: chapter.chapter_summary,
-            });
+            var temp = new Chapter.fillDetails(chapter);
 
             chapters.push(temp);
         });
+
+        res.render("home.ejs", { chapters: chapters, title: "Bhagavad Gita" });
     } catch (error) {
-        console.error(error);
+        res.sendStatus(422).json(error.details);
     }
-    console.log(chapters);
-    res.render("home.ejs", { chapters: chapters });
 });
 
 // Getting details of a specific chapter...
 app.get("/chapter/:ch", async (req, res) => {
     var ch = parseInt(req.params.ch);
 
-    const chapterRequest = {
-        method: "GET",
-        url: `https://bhagavad-gita3.p.rapidapi.com/v2/chapters/${ch}/`,
-        headers: {
-            "X-RapidAPI-Key": API_KEY,
-            "X-RapidAPI-Host": "bhagavad-gita3.p.rapidapi.com",
-        },
-    };
-
-    const versesRequest = {
-        method: "GET",
-        url: `https://bhagavad-gita3.p.rapidapi.com/v2/chapters/${ch}/verses/`,
-        headers: {
-            "X-RapidAPI-Key": API_KEY,
-            "X-RapidAPI-Host": "bhagavad-gita3.p.rapidapi.com",
-        },
-    };
-
     try {
-        const chapterResponse = (await axios.request(chapterRequest)).data;
-        const versesResponse = (await axios.request(versesRequest)).data;
+        request.url = `${API_URL}${ch}/`;
+        const chapterResponse = (await axios.request(request)).data;
 
-        var chapter = new Chapter({
-            id: chapterResponse.id,
-            hindiName: chapterResponse.name,
-            englishName: chapterResponse.name_translated,
-            verseCount: chapterResponse.verses_count,
-            chapterNumber: chapterResponse.chapter_number,
-            chapterNameMeaning: chapterResponse.name_meaning,
-            chapterSummeryHindi: chapterResponse.chapter_summary_hindi,
-            chapterSummeryEnglish: chapterResponse.chapter_summary,
-        });
+        request.url = `${API_URL}${ch}/verses/`;
+        const versesResponse = (await axios.request(request)).data;
+
+        var chapter = new Chapter.fillDetails(chapterResponse);
 
         var verses = [];
-
         versesResponse.forEach((verse) => {
             var temp = new Verse.fillDetails(verse);
 
@@ -98,41 +73,50 @@ app.get("/chapter/:ch", async (req, res) => {
         });
 
         var chapterDetails = {
-            chapter : chapter,
-            verses : verses
+            chapter: chapter,
+            verses: verses,
+            title: `Chapter ${ch}`
         };
-        // res.send(chapterDetails);
+
         res.render("chapter.ejs", chapterDetails);
     } catch (error) {
-        console.error(error);
+        res.sendStatus(422).json(error.details);
     }
 });
 
 
 // GET a particular verse
-app.get("/chapter/:ch/verse/:vr", async (req, res) =>{
+app.get("/chapter/:ch/verse/:vr", async (req, res) => {
     var ch = parseInt(req.params.ch);
     var vr = parseInt(req.params.vr);
 
-    const options = {
-        method: 'GET',
-        url: `https://bhagavad-gita3.p.rapidapi.com/v2/chapters/${ch}/verses/${vr}/`,
-        headers: {
-          'X-RapidAPI-Key': API_KEY,
-          'X-RapidAPI-Host': 'bhagavad-gita3.p.rapidapi.com'
-        }
-      };
-      
-      try {
-          const response = (await axios.request(options)).data;
+    try {
+        request.url = `${API_URL}${ch}/verses/${vr}/`;
+        const response = (await axios.request(request)).data;
 
-          var verse = Verse.fillDetails(response);
+        var verse = Verse.fillDetails(response);
 
-          res.render("verse.ejs", verse);
-      } catch (error) {
-          console.error(error);
-      }
+        res.render("verse.ejs", {
+            verse: verse,
+            title: `Chapter ${ch} Verse ${vr}`
+        });
+    } catch (error) {
+        res.sendStatus(422).json(error.details);
+    }
 });
+
+
+// POST return the verse count for a particular chanpter.
+app.post("/getVerseCount", async (req, res) => {
+    try {
+        request.url = `${API_URL}${parseInt(req.body.ch)}/`;
+        const chapterResponse = (await axios.request(request)).data;
+
+        res.send(chapterResponse);
+    } catch (error) {
+        res.sendStatus(422).json(error.details);
+    }
+})
 
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);

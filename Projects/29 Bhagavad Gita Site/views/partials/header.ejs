@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Home Page</title>
+    <title><%= title %></title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,9 +19,9 @@
         <!-- Navbar -->
         <div class="nav">
             <h1>Bhagavad Gita</h1>
-            <form action="/chapter" method="POST" class="navForm">
-                <input type="number" min="1" max="18" name="chapterNumber" placeholder="Enter Chapter Number">
-                <input type="number" min="1" max="18" name="verseNumber" placeholder="Enter Verse Number">
-                <input type="submit" value="OK">
-            </form>
+            <div  class="navForm">
+                <input type="number" name="chapterNumber" placeholder="Enter Chapter Number">
+                <input type="number" name="verseNumber" placeholder="Enter Verse Number">
+                <button value="OK">Go</button>
+            </div>
         </div>

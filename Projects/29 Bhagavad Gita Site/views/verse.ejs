@@ -3,10 +3,10 @@
 
         <!-- Verse Details -->
         <div class="verse_details">
-            <h1>BG <%= chapterNumber %>.<%= verseNumber %></h1>
-            <h1><%= hindiText %></h1>
-            <p><%= transliteration %></p>
-            <p><%= wordMeanings %></p>
+            <h1>BG <%= verse.chapterNumber %>.<%= verse.verseNumber %></h1>
+            <h1><%= verse.hindiText %></h1>
+            <p><%= verse.transliteration %></p>
+            <p><%= verse.wordMeanings %></p>
         </div>
 
         <hr>
@@ -15,13 +15,13 @@
         <!-- Verse Translation -->
         <div class="verse_translation">
             <h1>Translation</h1>
-            <p><%= englishTranslation %></p>
+            <p><%= verse.englishTranslation %></p>
         </div>
 
         <!-- Verse Commentry -->
         <div class="verse_commentry">
             <h1>Commentry</h1>
-            <p><%= englishCommentry %></p>
+            <p><%= verse.englishCommentry %></p>
         </div>
 
         <hr>
