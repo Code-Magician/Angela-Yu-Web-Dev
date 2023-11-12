@@ -34,6 +34,8 @@ app.use(express.static("public"));
 
 // GET request for fetching all the chapters details.
 app.get("/", async (req, res) => {
+    res.render("loader.ejs");
+    
     var chapters = [];
 
     try {

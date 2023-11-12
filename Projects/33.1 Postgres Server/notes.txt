@@ -1,0 +1,2 @@
+'United%' or 'United' || '%'  -> It means all the strings that starts with United.
+'%A' or '%' || 'A' -> It means all the strings that ends with A. 
