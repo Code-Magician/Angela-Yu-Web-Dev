@@ -1,0 +1,33 @@
+<!-- Header -->
+<%- include('partials/header.ejs') %>
+
+        <!-- Verse Details -->
+        <div class="verse_details">
+            <h1>BG <%= verse.chapterNumber %>.<%= verse.verseNumber %></h1>
+            <h1><%= verse.hindiText %></h1>
+            <p><%= verse.transliteration %></p>
+            <p><%= verse.wordMeanings %></p>
+        </div>
+
+        <hr>
+        <br>
+
+        <!-- Verse Translation -->
+        <div class="verse_translation">
+            <h1>Translation</h1>
+            <p><%= verse.englishTranslation %></p>
+        </div>
+
+        <!-- Verse Commentry -->
+        <div class="verse_commentry">
+            <h1>Commentry</h1>
+            <p><%= verse.englishCommentry %></p>
+        </div>
+
+        <hr>
+
+        <!-- Footer -->
+        <%- include('partials/footer.ejs') %>
+    </div>
+</body>
+</html>

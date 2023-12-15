@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mondrian Project</title>
+    <style>
+      /* 
+    Write your CSS here 
+    Gap Colour: #000
+    White: #F0F1EC
+    Red: #E72F24
+    Black: #232629
+    Blue: #004592
+    Yellow: #F9D01E
+
+    For dimensions, see dimensions.png image.
+    HINT: Remember you can't change the properties of grid lines.
+    But grid lines are transparent!
+    */
+
+      .flexbox {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        height: 100vh;
+      }
+
+      .painting {
+        display: grid;
+        grid-template-columns: 320px auto;
+        grid-template-rows: 414px auto;
+        gap: 9px;
+
+        width: 748px;
+        height: 748px;
+        background-color: black;
+      }
+
+      .red {
+        background-color: #E72F24;
+      }
+
+      .white {
+        background-color: #F0F1EC;
+      }
+
+      .yellow {
+        background-color: #F9D01E;
+      }
+
+      .black {
+        background-color: #232629;
+      }
+
+      .blue {
+        background-color: #004592;
+      }
+
+      #r2c1 {
+        display: grid;
+        grid-template-rows: 1fr 20px;
+        grid-template-columns: 1fr;
+        gap: 9px;
+      }
+
+      #r2c2 {
+        display: grid;
+        grid-template-columns: 1fr 50px;
+        grid-template-rows: 1fr;
+        gap: 9px;
+      }
+
+      #r2c2-1 {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 20px;
+        gap: 9px;
+      }
+
+      #r2c2-1-2 {
+        display: grid;
+        grid-template-columns: 198px 153px;
+        grid-template-rows: 1fr;
+        gap: 9px;
+      }
+
+      #r2c2-2 {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 130px auto;
+        gap: 10px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Write your HTML here -->
+    <div class="flexbox">
+      <div class="painting">
+        <div class="red"></div>
+
+        <div class="white"></div>
+
+        <div id="r2c1">
+          <div class="white"></div>
+          <div class="white"></div>
+        </div>
+
+        <div id="r2c2">
+          <div id="r2c2-1">
+            <div class="white"></div>
+            <div id="r2c2-1-2">
+              <div class="yellow"></div>
+              <div class="black"></div>
+            </div>
+          </div>
+
+          <div id="r2c2-2">
+            <div class="blue"></div>
+            <div class="white"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+
+</html>

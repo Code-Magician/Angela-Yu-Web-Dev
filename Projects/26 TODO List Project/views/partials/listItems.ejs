@@ -1,0 +1,14 @@
+<% if (locals.items) { %>
+  <div class="list-container">
+    <ul class="list">
+      <% for( let i=0; i < items.length; i++ ) { %>
+        <li>
+          <input class="check <%=i%>" type="checkbox" value="<%=i%>">
+          <p id="text<%=i%>" class="list-item-text">
+            <%= items[i] %>
+          </p>
+        </li>
+        <% } %>
+    </ul>
+  </div>
+  <% } %>

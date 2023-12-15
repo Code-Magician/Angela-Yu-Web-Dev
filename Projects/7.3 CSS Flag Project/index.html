@@ -1,0 +1,78 @@
+<!-- There are 4 types of positioning in the HTML -->
+<!-- 1. Static    :- Ye default positioning hoti hai html ki jisme elements ek k neeche ek jaise position ho jaate hain. -->
+<!-- 2. Relative  :- Like agr kisi element ki default position kahin hai screen pr and we apply relative position to it then vo apni default position k relative mein position change krta hai. -->
+<!-- 3. Absolute  :- Agr kisi element ko absolutely position krna hai to vo apne nearest ancestors mein dekhega k kaunsa element k css code mein position abosulte hai and vo uske relative apne aap ko position kr lega agr koi bhi absolute position ancestor ni mila to vo element khdko top-left corner of webpage k relative mein position kr lega. -->
+<!-- 4. Fixed     :- This is the position of the element relative to the top-left corner of the webpage. -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <title>CSS Flag Project</title>
+    <style>
+      /* Write your CSS Code here */
+      .flag {
+        height: 600px;
+        width: 900px;
+        background-color: red;
+        position: absolute;
+      }
+
+      .flag>div {
+        height: 50%;
+        width: 100%;
+        background-color: blue;
+        position: absolute;
+        top: 150px;
+      }
+
+      .flag>div>div {
+        background-color: white;
+        height: 200px;
+        width: 200px;
+        border-radius: 50%;
+        position: absolute;
+        left: 350px;
+        top: 50px;
+      }
+
+      p {
+        margin: 0;
+        text-align: center;
+      }
+
+      .flag>div p {
+
+        font-size: 80px;
+      }
+
+      .flag>p {
+        color: white;
+        font-size: 100px;
+      }
+    </style>
+  </head>
+
+  <!-- 
+  IMPORTANT! Do not change any HTML
+Don't add any classes/ids/elements 
+Use what you know about combining selectors 
+and CSS specificity instead.
+Hint 1: The flag is 900px by 600px and the circle is 200px by 200px.
+Hint 2: You can use CSS inspection to get the colors from
+https://appbrewery.github.io/flag-of-laos/
+-->
+
+  <body>
+    <div class="flag">
+      <p>The Flag</p>
+      <div>
+        <div>
+          <p>of Laos</p>
+        </div>
+      </div>
+    </div>
+  </body>
+
+</html>

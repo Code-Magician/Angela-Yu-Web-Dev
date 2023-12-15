@@ -1,0 +1,437 @@
+* {
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+}
+
+
+hr {
+    width: 75%;
+
+    height: 1px;
+    background-color: black;
+    border: 0;
+}
+
+
+/* Home Page */
+
+.nav {
+    z-index: 10;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    width: 100%;
+    height: 10vh;
+
+    background-color: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+}
+
+.nav>h1 {
+    margin-left: 7vw;
+
+    font-weight: 800;
+
+    color: white;
+
+    cursor: pointer;
+}
+
+.navForm {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+
+    height: 50%;
+
+    margin-right: 7vw;
+}
+
+.navForm>input,
+button {
+    outline: none;
+
+    border: 5px solid rgba(0, 0, 0, 0);
+    border-radius: 5px;
+}
+
+.navForm>input[type="number"] {
+    /* -moz-appearance: textfield; */
+}
+
+.navForm>input[type="number"]:focus {
+    border: 5px solid rgba(246, 192, 44, 1);
+}
+
+.navForm>input::-webkit-outer-spin-button,
+.navForm>input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 50px;
+
+    width: 100%;
+}
+
+.container>h1 {
+    font-size: 125px;
+    font-weight: 900;
+
+    color: #000000;
+}
+
+.header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 50px;
+
+    height: 65vh;
+    width: 90%;
+
+    background-image: linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25)), url("/images/headerIMG.jpg");
+    background-position-x: center;
+    background-size: cover;
+
+    margin-top: 20vh;
+
+    border-radius: 20px;
+}
+
+
+.header>h1 {
+    color: aliceblue;
+
+    text-align: center;
+
+    font-size: 70px;
+    font-weight: bolder;
+
+    line-height: 110%;
+
+    text-shadow: 0 3px 10px rgb(0 0 0 / 0.5);
+}
+
+.header span {
+    color: #FEDF89;
+}
+
+.header>button {
+    width: 150px;
+    height: 50px;
+
+    font-size: medium;
+    font-weight: lighter;
+
+    border-radius: 5px;
+    border: 0;
+
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.5);
+
+    padding: 0;
+}
+
+.header>button:hover {
+    cursor: pointer;
+}
+
+.chapters {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 25px;
+
+    width: 75%;
+
+    margin-top: 20px;
+}
+
+.chapters>h2 {
+    font-size: 70px;
+    font-weight: bolder;
+}
+
+.chaptersGrid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(9, 1fr);
+    gap: 20px;
+
+    width: 100%;
+}
+
+.chaptersDescription {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+
+    padding: 25px;
+
+    background-color: rgb(255, 255, 255);
+
+    box-shadow: 0px 8px 16px rgba(22, 34, 51, .08);
+
+    border: 2px solid rgba(255, 156, 17, 0.0);
+    border-radius: 10px;
+
+    font-size: 100%;
+}
+
+.chaptersDescription:hover {
+    cursor: pointer;
+
+    background-color: rgba(255, 224, 137, 0.2);
+
+    border: 2px solid rgba(246, 192, 44, 0.5);
+}
+
+.chaptersDescription>h4 {
+    margin-bottom: 5px;
+
+    color: #F57903;
+}
+
+.chaptersDescription>p {
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+    color: #6B7280;
+
+    font-size: 13px;
+}
+
+.footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 100%;
+    height: 10vh;
+
+    color: rgb(0, 0, 0);
+
+    font-weight: 700;
+}
+
+.footer a:link {
+    text-decoration: none;
+    color: rgb(70, 65, 235);
+}
+
+.footer a:visited {
+    color: rgb(70, 65, 235);
+    ;
+}
+
+.footer a:active {
+    color: red;
+}
+
+
+/* Chapter Page */
+
+.chapter_details {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 30px;
+
+    width: 60%;
+
+    margin-top: 20vh;
+}
+
+.chapter_details>h4 {
+    font-size: 20px;
+    font-weight: 600;
+
+    color: #F57903;
+}
+
+.chapter_details>h1 {
+    font-size: 35px;
+    font-weight: bolder;
+}
+
+.chapter_details>p {
+    font-size: 19px;
+}
+
+.verses {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 30px;
+
+    width: 60%;
+}
+
+
+.versesList {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+
+    width: 100%;
+}
+
+.verse {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    /* gap:50px; */
+
+    width: 100%;
+
+    padding: 30px;
+
+    border-radius: 10px;
+    ;
+}
+
+.verse:hover {
+    background-color: rgba(255, 224, 137, 0.2);
+}
+
+.verse>h4 {
+    font-weight: 500;
+
+    width: 20%;
+    height: 100%;
+
+    color: #F57903;
+}
+
+.verse>p {
+    height: 100%;
+    width: 70%;
+}
+
+.verse_details {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 30px;
+
+    width: 60%;
+
+    margin-top: 20vh;
+
+    text-align: center;
+}
+
+.verse_details>h1:nth-child(1) {
+    font-weight: 900;
+}
+
+.verse_details>h1:nth-child(2) {
+    color: #F57903;
+
+    font-weight: lighter;
+
+    width: 52%;
+}
+
+.verse_details>p:nth-child(3) {
+    font-size: large;
+    font-weight: 100;
+
+    width: 52%;
+}
+
+.verse_details>p:nth-child(4) {
+    font-size: medium;
+
+    width: 100%;
+}
+
+.verse_translation,
+.verse_commentry {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 30px;
+
+    width: 75%;
+
+    font-weight: 900;
+}
+
+.verse_translation,
+.verse_commentry>p {
+    font-weight: 200;
+    font-size: 19px;
+}
+
+
+.pointer {
+    cursor: pointer;
+}
+
+
+/* Loader */
+.lds-facebook {
+    display: inline-block;
+    position: relative;
+    width: 80px;
+    height: 80px;
+}
+
+.lds-facebook div {
+    display: inline-block;
+    position: absolute;
+    left: 8px;
+    width: 16px;
+    background: #fff;
+    animation: lds-facebook 1.2s cubic-bezier(0, 0.5, 0.5, 1) infinite;
+}
+
+.lds-facebook div:nth-child(1) {
+    left: 8px;
+    animation-delay: -0.24s;
+}
+
+.lds-facebook div:nth-child(2) {
+    left: 32px;
+    animation-delay: -0.12s;
+}
+
+.lds-facebook div:nth-child(3) {
+    left: 56px;
+    animation-delay: 0;
+}
+
+@keyframes lds-facebook {
+    0% {
+        top: 8px;
+        height: 64px;
+    }
+
+    50%,
+    100% {
+        top: 24px;
+        height: 32px;
+    }
+}

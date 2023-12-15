@@ -1,0 +1,30 @@
+<%- include('partials/header.ejs') %>
+    <hr />
+    <main>
+        <div class="container">
+            <div class="date">
+                <h1>
+                    <% if (locals.date) { %>
+                        <%= date.toUpperCase()%>
+                            <% } else { %>
+                                WORK TODO LIST
+                                <%}%>
+                </h1>
+            </div>
+            <hr />
+            <div class="input">
+                <form action="<%= route %>" method="post" class="input-form">
+                    <input type="text" placeholder="Write your next task here." name="item">
+                    <button type="submit">+
+                    </button>
+                </form>
+            </div>
+
+            <hr />
+
+            <%- include('partials/listItems.ejs') %>
+
+        </div>
+    </main>
+
+    <%- include('partials/footer.ejs') %>

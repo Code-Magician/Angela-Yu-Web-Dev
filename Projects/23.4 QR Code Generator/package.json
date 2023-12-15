@@ -1,0 +1,17 @@
+{
+  "dependencies": {
+    "inquirer": "^9.2.8",
+    "qr-image": "^3.2.0"
+  },
+  "name": "qr-generator",
+  "version": "1.0.0",
+  "description": "QR Code Generation using URL",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "./index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Singh Priyansh",
+  "license": "ISC"
+}

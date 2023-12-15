@@ -1,0 +1,116 @@
+<div class="footer">
+    <p>
+        CREATED BY
+        <a target="_blank" rel="noopener noreferrer" href="https://priyanshsingh.netlify.app/">SINGH PRIYANSH</a>
+    </p>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    // Click on logo redirects to home page.
+    $(".nav h1").click(() => {
+        window.location.href = "/";
+    })
+
+
+    let chapterNumberIn, verseNumberIn, verseCount;
+
+    // Chapter Input Box
+    $('.navForm input:first').on("focus", function(){
+        verseCount = null;
+        
+        $(this).attr("placeholder", "18 Chapters");
+    });
+
+    $(".navForm input:first").on("input", function() {
+
+        let value = parseInt($(this).val());
+
+        console.log(value);
+
+        if (value >=1 && value <= 18)
+            chapterNumberIn = value;
+        else
+        {
+            $(this).val(null);
+            chapterNumberIn = null;
+        }
+
+        console.log(chapterNumberIn);
+    });
+
+
+    $(".navForm input:first").on("blur", function (){
+        $(this).attr("placeholder", "Enter Chapter Number");
+
+        if (chapterNumberIn == null) return;
+
+        $.ajax(
+            {
+                url: "/getVerseCount",
+                method: "POST",
+                data: {
+                    ch: chapterNumberIn
+                },
+
+                success: function (data) {
+                    console.log(data);
+                    verseCount = parseInt(data.verses_count);
+                },
+                error: function (data) {
+                    console.log(data);
+                }
+            }
+        );
+    });
+
+
+    // Verses Input Box
+    $(".navForm input:eq(1)").on("focus", function(){
+        if(verseCount != null)
+            $(this).attr("placeholder", `${verseCount} Verses`);
+    });
+
+    $(".navForm input:eq(1)").on("input", function () {
+        if (chapterNumberIn == null || verseCount == null) {
+            $(this).val(null);
+            return;
+        }
+
+        $(this).attr("placeholder", `${verseCount} Verses`);
+
+        let value = parseInt($(this).val());
+
+        if(value >= 1 && value <= verseCount) verseNumberIn = value;
+        else {
+            $(this).val(null);
+            verseNumberIn = null;
+        }
+    });
+
+    $(".navForm input:eq(1)").on("blur", function(){
+        $(this).attr("placeholder", "Enter Verse Number");
+    });
+
+    
+    // Goto Button
+    $(".navForm button").on("click", function(){
+        if(chapterNumberIn == null) return;
+
+        let link = `/chapter/${chapterNumberIn}`;
+
+        if(verseNumberIn != null) link += `/verse/${verseNumberIn}`;
+
+        window.location.href = link;
+    });
+
+    $(".navForm button").hover(
+        function(){
+            if(chapterNumberIn != null)
+                $(this).addClass("pointer");
+        },
+        function(){
+            $(this).removeClass("pointer");
+        }
+    )
+</script>
