@@ -1,7 +1,8 @@
+import 'dotenv/config';
 import express from "express";
 import bodyParser from "body-parser";
-import ejs from "ejs";
 import mongoose from "mongoose";
+import encrypt from "mongoose-encryption";
 
 const app = express();
 const port = 3000;
@@ -12,10 +13,12 @@ app.use(bodyParser.urlencoded({extended:true}));
 
 
 mongoose.connect("mongodb://localhost:27017/userDB");
-const userSchema = {
+
+const userSchema = new mongoose.Schema( {
     email : String,
     password : String
-};
+});
+userSchema.plugin(encrypt,{ secret: process.env.SECRET , encryptedFields: ['password'] });
 
 const User = new mongoose.model("User", userSchema);
 
