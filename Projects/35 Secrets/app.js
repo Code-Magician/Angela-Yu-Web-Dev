@@ -3,6 +3,7 @@ import express from "express";
 import bodyParser from "body-parser";
 import mongoose from "mongoose";
 import encrypt from "mongoose-encryption";
+import md5 from 'md5';
 
 const app = express();
 const port = 3000;
@@ -11,15 +12,19 @@ app.use(express.static("public"));
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended:true}));
 
-
+// Connecting Mongoose database
 mongoose.connect("mongodb://localhost:27017/userDB");
 
+// Creating Schema to send to database
 const userSchema = new mongoose.Schema( {
     email : String,
     password : String
 });
-userSchema.plugin(encrypt,{ secret: process.env.SECRET , encryptedFields: ['password'] });
 
+// Encryption of password using a Secret.
+// userSchema.plugin(encrypt,{ secret: process.env.SECRET , encryptedFields: ['password'] });
+
+// Creating a Model from the schema.
 const User = new mongoose.model("User", userSchema);
 
 
@@ -38,7 +43,7 @@ app.get("/login", (req, res)=>{
 app.post("/register", (req, res)=>{
     const newUser = new User({
         email : req.body.username,
-        password : req.body.password
+        password : md5(req.body.password)   // Hashing the password.
     });
 
     try{
@@ -53,7 +58,7 @@ app.post("/register", (req, res)=>{
 
 app.post("/login",async (req, res)=>{
     const username = req.body.username;
-    const password = req.body.password;
+    const password = md5(req.body.password);   // Hashing the password.
 
     try{
         const foundUser = await User.where({email:username}).findOne();
