@@ -1,0 +1,26 @@
+1. Search Windows Features on and off in windows. 
+	Tick "Virtual Machine Plateform" and "Window SubSystem for Linux" and click ok. PC will prompt for restart if not then do the restart.
+	Goto Microsoft store and install Ubuntu from Canonical Group Limited.
+	It will start to install if not change the DNS to Google Public DNS ( Search on youtube for tutorial ).
+	Open Ubuntu that is installed. The prompt will open and ubuntu will start the initialization if any error comes Goto ( https://learn.microsoft.com/en-us/windows/wsl/install-manual#step-4---download-the-linux-kernel-update-package ) and install the WSL 2 Linux Kernel update package.
+	Now the initialization will finish and Ubuntu will ask for username and password. Set them.
+	Run "wsl --list --verbose" to check if Ubuntu is working and installed properly.
+
+2. In vs code install Motoko language support package and WSL Remote Server package.
+
+3. Goto "https://brew.sh/" and run the command mentioned there and install brew on ubuntu.
+	After installation is completed there will be a section called "Next Steps" there will be 2 commands run them also.
+	Below "Next Steps" there will be command to install Homebrew dependencies run that also.
+	After that check for brew version installed using "brew --version" if there is some version shown then it is installed successfully.
+	Now install node on Ubuntu using "brew install node@16" and if there is some link error then run "brew link node@16" after that.
+	Check for the node version to confirm the successful installation using "node --version".
+
+4. In Ubuntu run "DFX_VERSION=0.9.3 sh -ci "$(curl -fsSL https://sdk.dfinity.org/install.sh)"" this command to install the DFX.
+	After that there will the given the path where the DFX has been installed copy that and run the following command. "export PATH=$PATH:<Paste the Path Here>" 
+	"echo "${PATH//:/$'\n'}"" Run this to confirm that there is a dfx directory there in the env variables.
+	Run "dfx --version" to check for successful DFX installation.
+
+5. To create a new DFX Dapp. In Ubuntu run "dfx new hello" command.
+	After the app is created run "dfx start" in one terminal.
+	After that run "dfx deploy" in other terminal it will deploy the canister in the blockchain. After that run "npm start" to start the Dapp on localhost:8080.
+	If any error occurs during running "npm start" update the webpacks-cli using "npm install webpack-cli@4.10.0 --save-dev" command.
